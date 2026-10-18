@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "buildCommand": "pnpm --filter @workspace/last-suspect run build",
   "outputDirectory": "artifacts/last-suspect/dist/public",
   "framework": "vite",
