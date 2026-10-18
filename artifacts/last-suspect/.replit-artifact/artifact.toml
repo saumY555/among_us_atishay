@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "OPERATION: LAST SUSPECT"
+description = "An immersive Among Us-inspired event landing page for SPARK × IIIT Bhopal, with an interactive emergency meeting, playable wire-matching puzzle, event briefing, and demo registration."
+version = "1.0.0"
+id = "artifacts/last-suspect"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25929
+
+[services.development]
+run = "pnpm --filter @workspace/last-suspect run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/last-suspect", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/last-suspect/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25929"
+BASE_PATH = "/"
